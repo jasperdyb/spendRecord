@@ -9,6 +9,7 @@ app.set('view engine', 'pug')
 
 //routes
 app.use('/', require('./routes/home.js'))
+app.use('/record', require('./routes/record.js'))
 
 
 app.listen(port)
