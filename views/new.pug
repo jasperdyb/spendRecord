@@ -1,4 +1,30 @@
 extends layouts\main.pug
 
 block view
-  h1  new page
+  div(class="container mt-2 px-5")
+    div(class="row mt-5 d-flex justify-content-center")
+      h5(class="col-2") *必填欄位
+      h2(class="col-auto") 支出項目明細
+    div(class="row mt-2 d-flex justify-content-center bg-primary")
+      form(autocomplete="off")
+        div(class="form-group row")
+          label(class="col-form-label-lg" for="inputName" ) 項目* :
+          div(class="col d-flex align-items-center")
+            input(type="text" class="form-control" id="inputName" name='name' required)
+        div(class="form-group row")
+          label(class="col-form-label-lg" for="inputDate" ) 日期* :
+          div(class="col d-flex align-items-center")
+            input(type="text" class="form-control" id="inputDate" name='date' data-provide="datepicker" required)
+        div(class="form-group row")
+          label(class="col-form-label-lg" for="inputCategory" ) 類別* :
+          div(class="col d-flex align-items-center")
+            select(class="form-control" id="inputCategory" name='category' required)
+              option(value="1") 1
+              option(value="2") 2
+              option(value="3") 3              
+        div(class="form-group row")
+          label(class="col-form-label-lg" for="inputCategory" ) 金額* :
+          div(class="col d-flex align-items-center")
+            input(type="number" class="form-control" id="inputCategory" name='category' required)
+        div(class="form-group row justify-content-center")
+            button(type="submit" class="btn btn-secondary " id="new-button") 新增
