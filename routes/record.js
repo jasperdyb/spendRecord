@@ -41,7 +41,14 @@ router.put('/:id', (req, res, next) => {
   })
 })
 
-router.delete('/:id/delete', (req, res, next) => {
+router.delete('/:id', (req, res, next) => {
+  Record.findById({ _id: req.params.id }, (err, record) => {
+    if (err) return console.error(err)
+    record.remove(err => {
+      if (err) return console.error(err)
+      return res.redirect('/')
+    })
+  })
 })
 
 module.exports = router
