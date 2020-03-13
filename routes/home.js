@@ -3,9 +3,21 @@ const router = express.Router()
 const Record = require("../models/record.js")
 
 router.get('/', (req, res, next) => {
-  Record.find()
+  let category = 'default'
+  let method = {}
+
+  if (req.query) {
+    category = req.query.category
+  }
+
+  if (category != 'default') {
+    method = { category: category }
+  }
+
+
+  Record.find(method)
     .lean()
-    .exec((err, records) => { // 把 model 所有的資料都抓回來
+    .exec((err, records) => {
       if (err) return console.error(err)
 
       let totalAmount = 0
@@ -14,7 +26,7 @@ router.get('/', (req, res, next) => {
         totalAmount += records[i].amount
       }
 
-      return res.render('index', { records, totalAmount }) // 將資料傳給 index 樣板
+      return res.render('index', { records, totalAmount, category }) // 將資料傳給 index 樣板
     })
 })
 

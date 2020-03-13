@@ -4,3 +4,8 @@ $('.delete-button').click(function (e) {
   $('#deletion').modal()
   $('#deletion-confirm').attr('action', `/record/${id}?_method=DELETE`)
 })
+
+$('#category-filter').change(function (e) {
+  e.preventDefault()
+  this.form.submit()
+})

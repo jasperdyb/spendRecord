@@ -3,15 +3,15 @@ extends layouts\main.pug
 block view
   div(class = "container mt-2 px-5") 
     div(class = "row mt-5 d-flex justify-content-center") 
-      form(class="col-6")
+      form(action="/" class="col-6" id="classify-form")
         div(class="form-group")
-          select(class="form-control" name="classification")
-            option(value="default") 類別
-            option(value="home") 家居物業
-            option(value="traffic") 交通出行
-            option(value="fun") 休閒娛樂
-            option(value="food") 餐飲食品
-            option(value="other") 其他 
+          select(class="form-control" name="category" id="category-filter")
+            option(value="default" ) 類別
+            option(value="home" selected= category=="home"? 'selected': null) 家居物業
+            option(value="traffic" selected= category=="traffic"? 'selected': null) 交通出行
+            option(value="fun" selected= category=="fun"? 'selected': null) 休閒娛樂
+            option(value="food" selected= category=="food"? 'selected': null) 餐飲食品
+            option(value="other" selected= category=="other"? 'selected': null) 其他  
 
 
     div(class = "row d-flex justify-content-center")
