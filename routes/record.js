@@ -26,7 +26,7 @@ router.get('/:id/edit', (req, res, next) => {
     })
 })
 
-router.post('/:id/edit', (req, res, next) => {
+router.put('/:id', (req, res, next) => {
   Record.findById({ _id: req.params.id }, (err, record) => {
     if (err) return console.error(err)
 
@@ -41,7 +41,7 @@ router.post('/:id/edit', (req, res, next) => {
   })
 })
 
-router.post('/:id/delete', (req, res, next) => {
+router.delete('/:id/delete', (req, res, next) => {
 })
 
 module.exports = router

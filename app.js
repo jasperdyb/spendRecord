@@ -1,9 +1,11 @@
 const express = require('express')
 const app = express()
+const port = 3000
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
-const port = 3000
+
 
 //Database connection
 mongoose.connect('mongodb://localhost/record', {
@@ -27,6 +29,7 @@ db.once('open', () => {
 app.set('view engine', 'pug')
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
 
 //routes
 app.use('/', require('./routes/home.js'))
