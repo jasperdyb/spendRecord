@@ -6,6 +6,7 @@ router.get('/new', (req, res, next) => {
 })
 
 router.post('/new', (req, res, next) => {
+  console.log(req.body)
 })
 
 router.get('/:id/edit', (req, res, next) => {
