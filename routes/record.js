@@ -17,11 +17,28 @@ router.post('/new', (req, res, next) => {
 })
 
 router.get('/:id/edit', (req, res, next) => {
-  _id = req.params.id
-  res.render('edit', { _id })
+  Record.findById({ _id: req.params.id })
+    .lean()
+    .exec((err, record) => {
+      if (err) return console.error(err)
+      console.log(record)
+      return res.render('edit', { record }) // 利用new頁面編輯資訊
+    })
 })
 
 router.post('/:id/edit', (req, res, next) => {
+  Record.findById({ _id: req.params.id }, (err, record) => {
+    if (err) return console.error(err)
+
+    for (var key in req.body) {
+      record[key] = req.body[key]
+    }
+    console.log(record)
+    record.save(err => {
+      if (err) return console.error(err)
+      return res.redirect(`/`)
+    })
+  })
 })
 
 router.post('/:id/delete', (req, res, next) => {

@@ -17,32 +17,32 @@ block view
     div(class = "row d-flex justify-content-center")
       div(class="col-auto")
         h2 Total:
+      //- TODO calculate total for user
       div(class="col-auto")
-        h2 2260
+        h2 2260 
     ul(class="list-group mx-5 ")
       each record in records 
-        a(href="#")
-          li(class = "list-group-item d-flex justify-content-between align-items-center ")
-            case record.category
-              when "home"
-                i( class="fas fa-home fa-2x")
-              when "traffic"
-                i( class="fas fa-shuttle-van fa-2x")
-              when "fun"
-                i( class="fas fa-grin-beam fa-2x")
-              when "food"
-                i( class="fas fa-utensils fa-2x")
-              when "other"
-                i( class="fas fa-pen fa-2x")
-            div(class="col-3")
-              h4 #{record.name}
-              h7 #{record.date}
-            h4(class="col-2 mb-0") #{record.amount}
-            div(class="col-auto")
-              button(class="btn btn-warning")
-                i(class='fas fa-pencil-alt')
-              button(class="btn btn-danger")
-                i(class='fas fa-trash-alt')
+        li(class = "list-group-item d-flex justify-content-between align-items-center ")
+          case record.category
+            when "home"
+              i( class="fas fa-home fa-2x")
+            when "traffic"
+              i( class="fas fa-shuttle-van fa-2x")
+            when "fun"
+              i( class="fas fa-grin-beam fa-2x")
+            when "food"
+              i( class="fas fa-utensils fa-2x")
+            when "other"
+              i( class="fas fa-pen fa-2x")
+          div(class="col-3")
+            h4 #{record.name}
+            h7 #{record.date}
+          h4(class="col-2 mb-0") #{record.amount}
+          div(class="col-auto")
+            a(href="record/"+record._id+"/edit" class="btn btn-warning")
+              i(class='fas fa-pencil-alt')
+            button(class="btn btn-danger")
+              i(class='fas fa-trash-alt')
         
   //- new button
   div(id = "corner-button")
