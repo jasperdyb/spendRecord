@@ -51,12 +51,9 @@ block view
               i(class='fas fa-pencil-alt')
             a(href="#" ,class="btn btn-danger delete-button",data-toggle="modal" data-target="#deletion" data-restaurant_id=record._id)
               i(class='fas fa-trash-alt')
-        
-  //- new button
-  div(id = "corner-button")
-    form(action="/record/new", method="get")
-      button(type="submit" class="btn btn-primary btn-lg rounded-circle p-3" data-toggle="tooltip" data-placement="left" title="新增項目") 
-        i(class="fas fa-plus fa-2x")
+    div(class = "row d-flex justify-content-center")
+      form(action="/record/new", method="get")
+        button(type="submit" class="btn btn-primary btn-lg p-3" data-toggle="tooltip" data-placement="left" title="新增項目") Add Record
 
   //- delete confirm modal
   div(class="modal" id="deletion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true")
