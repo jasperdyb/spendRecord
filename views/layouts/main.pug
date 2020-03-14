@@ -18,7 +18,12 @@ body
       div(class="container")
         a(href="/" class="navbar-brand" )
           |PocketMoney
- 
+        if isAuthenticated
+          a(href="/users/logout" class="btn btn-secondary") Logout
+        else if login
+          //- no button
+        else
+          a(href="/users/login" class="btn btn-secondary") Login
 
   block view
 
