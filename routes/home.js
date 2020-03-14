@@ -28,7 +28,6 @@ router.get('/', (req, res, next) => {
         totalAmount += records[i].amount
       }
       // console.log(records)
-      //TODO Add message to note there's no record in the account or category
       return res.render('index', { records, totalAmount, category }) // 將資料傳給 index 樣板
     })
 })
