@@ -5,16 +5,14 @@ const { authenticated } = require('../config/auth')
 
 router.get('/', authenticated, (req, res, next) => {
   let category = 'default'
-  let method = {}
+  let method = { userId: req.user._id }
 
   if (req.query.category) {
-    console.log(req.query)
     category = req.query.category
   }
 
   if (category != 'default') {
-    method = { category: category }
-    console.log(category, method)
+    method = { category: category, userId: req.user._id }
   }
 
 

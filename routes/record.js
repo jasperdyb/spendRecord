@@ -17,7 +17,7 @@ router.post('/new', (req, res, next) => {
 })
 
 router.get('/:id/edit', (req, res, next) => {
-  Record.findById({ _id: req.params.id })
+  Record.findById({ _id: req.params.id, userId: req.user._id })
     .lean()
     .exec((err, record) => {
       if (err) return console.error(err)
@@ -27,7 +27,7 @@ router.get('/:id/edit', (req, res, next) => {
 })
 
 router.put('/:id', (req, res, next) => {
-  Record.findById({ _id: req.params.id }, (err, record) => {
+  Record.findById({ _id: req.params.id, userId: req.user._id }, (err, record) => {
     if (err) return console.error(err)
 
     for (var key in req.body) {
@@ -42,7 +42,7 @@ router.put('/:id', (req, res, next) => {
 })
 
 router.delete('/:id', (req, res, next) => {
-  Record.findById({ _id: req.params.id }, (err, record) => {
+  Record.findById({ _id: req.params.id, userId: req.user._id }, (err, record) => {
     if (err) return console.error(err)
     record.remove(err => {
       if (err) return console.error(err)

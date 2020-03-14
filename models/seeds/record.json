@@ -3,49 +3,49 @@
     {
       "name": "午餐",
       "category": "food",
-      "date": "'03/13/2020'",
+      "date": "03/13/2020",
       "amount": 70
     },
     {
       "name": "晚餐",
       "category": "food",
-      "date": "'03/13/2020'",
+      "date": "03/13/2020",
       "amount": 100
     },
     {
       "name": "理髮",
       "category": "home",
-      "date": "'03/11/2020'",
+      "date": "03/11/2020",
       "amount": 100
     },
     {
       "name": "禮物",
       "category": "other",
-      "date": "'03/03/2020'",
+      "date": "03/03/2020",
       "amount": 1000
     },
     {
       "name": "理髮",
       "category": "home",
-      "date": "'03/13/2020'",
+      "date": "03/13/2020",
       "amount": 300
     },
     {
       "name": "晚餐",
       "category": "food",
-      "date": "'03/14/2020'",
+      "date": "03/14/2020",
       "amount": 200
     },
     {
       "name": "拜訪客戶",
       "category": "traffic",
-      "date": "'03/14/2020'",
+      "date": "03/14/2020",
       "amount": 1200
     },
     {
       "name": "按摩",
       "category": "fun",
-      "date": "'03/14/2020'",
+      "date": "03/14/2020",
       "amount": 3000
     }
   ]
