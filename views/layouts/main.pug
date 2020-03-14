@@ -21,7 +21,7 @@ body
         if isAuthenticated
           a(href="/users/logout" class="btn btn-secondary") Logout
         else if login
-          //- no button
+          a(href="/users/register" class="btn btn-secondary") Register
         else
           a(href="/users/login" class="btn btn-secondary") Login
 
