@@ -7,7 +7,7 @@ router.get('/new', (req, res, next) => {
 })
 
 router.post('/new', (req, res, next) => {
-  console.log(req.body)
+  req.body.userId = req.user._id
   const record = new Record(req.body)
 
   record.save(err => {
