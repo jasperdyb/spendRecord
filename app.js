@@ -7,7 +7,7 @@ const methodOverride = require('method-override')
 const session = require('express-session')
 const passport = require('passport')
 require('./config/passport')(passport)
-
+const { authenticated } = require('./config/auth')
 
 
 //Database connection
@@ -42,11 +42,17 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(passport.initialize())
 app.use(passport.session())
+app.use((req, res, next) => {
+  res.locals.user = req.user
+  res.locals.isAuthenticated = req.isAuthenticated()
+
+  next()
+})
 
 
 //routes
 app.use('/', require('./routes/home.js'))
-app.use('/record', require('./routes/record.js'))
+app.use('/record', authenticated, require('./routes/record.js'))
 app.use('/users', require('./routes/user.js'))
 
 

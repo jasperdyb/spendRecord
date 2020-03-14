@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const Record = require("../models/record.js")
+const { authenticated } = require('../config/auth')
 
-router.get('/', (req, res, next) => {
+router.get('/', authenticated, (req, res, next) => {
   let category = 'default'
   let method = {}
 
