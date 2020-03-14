@@ -9,3 +9,13 @@ $('#category-filter').change(function (e) {
   e.preventDefault()
   this.form.submit()
 })
+
+$({ Counter: 0 }).animate({
+  Counter: $('#totalAmount').text()
+}, {
+  duration: 500,
+  easing: 'swing',
+  step: function () {
+    $('#totalAmount').text(Math.ceil(this.Counter));
+  }
+});
