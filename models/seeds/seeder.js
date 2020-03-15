@@ -39,39 +39,33 @@ db.once('open', () => {
           password
         })
 
-        //密碼雜湊
-        bcrypt.genSalt(10, (err, salt) =>
-          bcrypt.hash(newUser.password, salt, (err, hash) => {
-            newUser.password = hash
 
-            newUser
-              .save()
-              .catch(err => console.log(err))
+        let salt = bcrypt.genSaltSync(10)
+        newUser.password = bcrypt.hashSync(newUser.password, salt)
 
-            console.log('User added!')
+        newUser
+          .save((err, userAdded) => {
+            console.log(userAdded._id)
+            if (userAdded.email === 'user1@example.com') {
+              for (var i = 0; i < 4; i++) {
+                record[i].userId = userAdded._id
+                Records.create(record[i])
+                console.log('record added!')
+              }
+            }
+            else if (userAdded.email === 'user2@example.com') {
+              for (var i = 4; i < 8; i++) {
+                record[i].userId = userAdded._id
+                Records.create(record[i])
+                console.log('record added!')
+              }
+            }
           })
-        )
+          .catch(err => console.log(err))
+        console.log('User added!')
       }
     })
   }
-
-  User.findOne({ email: 'user1@example.com' })
-    .lean()
-    .exec((err, user) => {
-      for (var i = 0; i < 4; i++) {
-        record[i].userId = user._id
-        Records.create(record[i])
-      }
-    })
-
-  User.findOne({ email: 'user2@example.com' })
-    .lean()
-    .exec((err, user) => {
-      for (var i = 4; i < 8; i++) {
-        record[i].userId = user._id
-        Records.create(record[i])
-      }
-    })
 
   console.log('done')
 })
