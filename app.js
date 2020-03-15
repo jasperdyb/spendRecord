@@ -15,7 +15,7 @@ const flash = require('connect-flash')
 
 
 //Database connection
-mongoose.connect('mongodb://localhost/record', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/record', {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true
@@ -81,4 +81,4 @@ app.use('/users', require('./routes/user.js'))
 app.use('/auth', require('./routes/auth.js'))//facebook authentication
 
 
-app.listen(port)
+app.listen(process.env.PORT || port)
