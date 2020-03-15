@@ -4,12 +4,14 @@
       "name": "午餐",
       "category": "food",
       "date": "03/13/2020",
+      "shop": "正宗便當",
       "amount": 70
     },
     {
       "name": "晚餐",
       "category": "food",
       "date": "03/13/2020",
+      "shop": "7-11",
       "amount": 100
     },
     {
@@ -28,12 +30,14 @@
       "name": "理髮",
       "category": "home",
       "date": "03/13/2020",
+      "shop": "好髮藝",
       "amount": 300
     },
     {
       "name": "晚餐",
       "category": "food",
       "date": "03/14/2020",
+      "shop": "好壽司",
       "amount": 200
     },
     {

@@ -3,8 +3,8 @@ extends layouts\main.pug
 block view
   div(class="container mt-2 px-5")
     div(class="row mt-4 d-flex justify-content-center")
-      h5(class="col-2") *必填欄位
-      h2(class="col-auto") 支出項目明細
+      h5(class="col-2" style="vertical-align: bottom") *必填欄位
+      h2(class="col-4") 支出項目明細
     div(class="row mt-2 d-flex justify-content-center")
       form(action="/record/new" , method="post" autocomplete="off")
         div(class="form-group row")
@@ -27,6 +27,10 @@ block view
               option(value="fun") 休閒娛樂
               option(value="food") 餐飲食品
               option(value="other") 其他              
+        div(class="form-group row")
+          label(class="col-form-label-lg" for="inputShop" ) 商家 :
+          div(class="col d-flex align-items-center")
+            input(type="text" class="form-control" id="inputShop" name='shop' placeholder="7-11,百元理髮,捷運...")
         div(class="form-group row")
           label(class="col-form-label-lg" for="inputAmount" ) 金額* :
           div(class="col d-flex align-items-center")

@@ -26,7 +26,11 @@ block view
               option(value="traffic" selected= record.category=="traffic"? 'selected': null) 交通出行
               option(value="fun" selected= record.category=="fun"? 'selected': null) 休閒娛樂
               option(value="food" selected= record.category=="food"? 'selected': null) 餐飲食品
-              option(value="other" selected= record.category=="other"? 'selected': null) 其他                
+              option(value="other" selected= record.category=="other"? 'selected': null) 其他
+        div(class="form-group row")
+          label(class="col-form-label-lg" for="inputShop" ) 商家 :
+          div(class="col d-flex align-items-center")
+            input(type="text" class="form-control" id="inputShop" name='shop' value=record.shop placeholder="7-11,百元理髮,捷運...")                
         div(class="form-group row")
           label(class="col-form-label-lg" for="inputAmount" ) 金額* :
           div(class="col d-flex align-items-center")
