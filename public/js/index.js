@@ -1,3 +1,8 @@
+$(document).ready(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  $('[data-toggle="popover"]').popover()
+})
+
 $('.delete-button').click(function (e) {
   e.stopPropagation()
   const id = $(e.currentTarget).data('restaurant_id')
