@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
-if (process.env.NODE_ENV !== 'production') {      // 如果不是 production 模式
-  require('dotenv').config()                      // 使用 dotenv 讀取 .env 檔案
+if (process.env.NODE_ENV !== 'production') { // 如果不是 production 模式
+  require('dotenv').config() // 使用 dotenv 讀取 .env 檔案
 }
 const port = 3000
 const mongoose = require('mongoose')
@@ -36,7 +36,7 @@ db.once('open', () => {
 app.use(session({
   secret: 'the special key',   // secret: 定義一組屬於你的字串做為私鑰
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: true
 }))
 
 //middleware

@@ -16,6 +16,6 @@ $({ Counter: 0 }).animate({
   duration: 500,
   easing: 'swing',
   step: function () {
-    $('#totalAmount').text(Math.ceil(this.Counter));
+    $('#totalAmount').text(Math.ceil(this.Counter))
   }
-});
+})

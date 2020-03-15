@@ -11,7 +11,7 @@ router.get('/', authenticated, (req, res, next) => {
     category = req.query.category
   }
 
-  if (category != 'default') {
+  if (category !== 'default') {
     method = { category: category, userId: req.user._id }
   }
 

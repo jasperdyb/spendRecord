@@ -5,5 +5,5 @@ module.exports = {
     }
     // console.log(req)
     res.redirect('/users/login')
-  },
+  }
 }

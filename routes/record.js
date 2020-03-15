@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Record = require("../models/record.js")
+const Record = require('../models/record.js')
 
 router.get('/new', (req, res, next) => {
   res.render('new')
@@ -9,6 +9,8 @@ router.get('/new', (req, res, next) => {
 router.post('/new', (req, res, next) => {
   req.body.userId = req.user._id
   const record = new Record(req.body)
+
+  // TODO add input verification
 
   record.save(err => {
     if (err) return console.error(err)
@@ -27,6 +29,9 @@ router.get('/:id/edit', (req, res, next) => {
 })
 
 router.put('/:id', (req, res, next) => {
+
+  // TODO add input verification
+
   Record.findById({ _id: req.params.id, userId: req.user._id }, (err, record) => {
     if (err) return console.error(err)
 
@@ -36,7 +41,7 @@ router.put('/:id', (req, res, next) => {
     console.log(record)
     record.save(err => {
       if (err) return console.error(err)
-      return res.redirect(`/`)
+      return res.redirect('/')
     })
   })
 })

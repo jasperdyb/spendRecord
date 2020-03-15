@@ -5,9 +5,7 @@ const bcrypt = require('bcryptjs')
 // 載入 User model
 const User = require('../models/user')
 
-
 module.exports = passport => {
-
   // 使用 Passport 的官方文件上的語法
   passport.use(
     // 定義 usernameField 為 email 

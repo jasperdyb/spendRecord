@@ -8,7 +8,7 @@ const bcrypt = require('bcryptjs')
 //Database connection
 mongoose.connect('mongodb://localhost/record', {
   useNewUrlParser: true,
-  useCreateIndex: true,
+  useCreateIndex: true
   // useUnifiedTopology: true
 })
 const db = mongoose.connection
@@ -22,8 +22,8 @@ db.on('error', () => {
 db.once('open', () => {
   console.log('Database connected!')
 
-  record = recordList.results
-  user = userList.results
+  const record = recordList.results
+  const user = userList.results
 
   for (let i = 0; i < user.length; i++) {
     let { name, email, password } = user[i]
@@ -51,12 +51,11 @@ db.once('open', () => {
             console.log('User added!')
           })
         )
-
       }
     })
   }
 
-  User.findOne({ email: "user1@example.com" })
+  User.findOne({ email: 'user1@example.com' })
     .lean()
     .exec((err, user) => {
       for (var i = 0; i < 4; i++) {
@@ -65,7 +64,7 @@ db.once('open', () => {
       }
     })
 
-  User.findOne({ email: "user2@example.com" })
+  User.findOne({ email: 'user2@example.com' })
     .lean()
     .exec((err, user) => {
       for (var i = 4; i < 8; i++) {
