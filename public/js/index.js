@@ -1,3 +1,8 @@
+$(document).ready(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  $('[data-toggle="popover"]').popover()
+})
+
 $('.delete-button').click(function (e) {
   e.stopPropagation()
   const id = $(e.currentTarget).data('restaurant_id')
@@ -10,6 +15,8 @@ $('#category-filter').change(function (e) {
   this.form.submit()
 })
 
+var totalValue = $('#totalAmount').text()
+
 $({ Counter: 0 }).animate({
   Counter: $('#totalAmount').text()
 }, {
@@ -17,5 +24,8 @@ $({ Counter: 0 }).animate({
   easing: 'swing',
   step: function () {
     $('#totalAmount').text(Math.ceil(this.Counter))
+  },
+  complete: function () {
+    $('#totalAmount').text(Math.ceil(totalValue))
   }
 })

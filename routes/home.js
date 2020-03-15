@@ -26,7 +26,7 @@ router.get('/', authenticated, (req, res, next) => {
       for (var i = 0; i < records.length; i++) {
         totalAmount += records[i].amount
       }
-      // console.log(records)
+      console.log(totalAmount)
       return res.render('index', { records, totalAmount, category }) // 將資料傳給 index 樣板
     })
 })

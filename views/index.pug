@@ -31,29 +31,32 @@ block view
           | Add one using + button at bottom right corner.
       each record in records 
         li(class = "list-group-item d-flex justify-content-between align-items-center ")
-          case record.category
-            when "home"
-              i( class="fas fa-home fa-2x")
-            when "traffic"
-              i( class="fas fa-shuttle-van fa-2x")
-            when "fun"
-              i( class="fas fa-grin-beam fa-2x")
-            when "food"
-              i( class="fas fa-utensils fa-2x")
-            when "other"
-              i( class="fas fa-pen fa-2x")
-          div(class="col-3")
+          div(class="col-1")
+            case record.category
+              when "home"
+                i( class="fas fa-home fa-2x")
+              when "traffic"
+                i( class="fas fa-shuttle-van fa-2x")
+              when "fun"
+                i( class="fas fa-grin-beam fa-2x")
+              when "food"
+                i( class="fas fa-utensils fa-2x")
+              when "other"
+                i( class="fas fa-pen fa-2x")
+          div(class="col-2")
             h4 #{record.name}
             h7 #{record.date}
-          h4(class="col-2 mb-0") #{record.amount}
-          div(class="col-auto")
-            a(href="record/"+record._id+"/edit" class="btn btn-warning")
+          h4(class="col-2 mb-0") #{record.shop}
+          h4(class="col-1 mb-0") #{record.amount}
+          div(class="col-1")
+            a(href="record/"+record._id+"/edit" class="btn btn-warning" data-toggle="tooltip" data-placement="right" title="編輯項目")
               i(class='fas fa-pencil-alt')
-            a(href="#" ,class="btn btn-danger delete-button",data-toggle="modal" data-target="#deletion" data-restaurant_id=record._id)
-              i(class='fas fa-trash-alt')
+            span(data-toggle="tooltip" data-placement="right" title="刪除項目")
+              a(href="#" ,class="btn btn-danger delete-button",data-toggle="modal" data-target="#deletion" data-restaurant_id=record._id)
+                i(class='fas fa-trash-alt')
     div(class = "row d-flex justify-content-center")
       form(action="/record/new", method="get")
-        button(type="submit" class="btn btn-primary btn-lg p-3" data-toggle="tooltip" data-placement="left" title="新增項目") Add Record
+        button(type="submit" class="btn btn-primary btn-lg p-3" ) Add Record
 
   //- delete confirm modal
   div(class="modal" id="deletion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true")
