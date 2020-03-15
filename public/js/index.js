@@ -10,6 +10,8 @@ $('#category-filter').change(function (e) {
   this.form.submit()
 })
 
+var totalValue = $('#totalAmount').text()
+
 $({ Counter: 0 }).animate({
   Counter: $('#totalAmount').text()
 }, {
@@ -17,5 +19,8 @@ $({ Counter: 0 }).animate({
   easing: 'swing',
   step: function () {
     $('#totalAmount').text(Math.ceil(this.Counter))
+  },
+  complete: function () {
+    $('#totalAmount').text(Math.ceil(totalValue))
   }
 })
