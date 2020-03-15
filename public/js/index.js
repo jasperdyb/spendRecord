@@ -15,6 +15,11 @@ $('#category-filter').change(function (e) {
   this.form.submit()
 })
 
+$('#month-filter').change(function (e) {
+  e.preventDefault()
+  this.form.submit()
+})
+
 var totalValue = $('#totalAmount').text()
 
 $({ Counter: 0 }).animate({

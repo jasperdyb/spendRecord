@@ -4,9 +4,13 @@ block view
   div(class = "container mt-2 px-5") 
     div(class = "row mt-3 d-flex justify-content-center") 
       form(action="/" class="col-6" id="classify-form")
-        div(class="form-group")
-          select(class="form-control" name="category" id="category-filter")
-            option(value="default" ) 全部
+        div(class="form-group row")
+          select(class="form-control col-6" name="month" id="month-filter")
+            option(value="default" ) 所有月份
+            each m in months
+              option(value= m selected= month==m? 'selected': null) #{m}
+          select(class="form-control col-6" name="category" id="category-filter")
+            option(value="default" ) 所有類別
             option(value="home" selected= category=="home"? 'selected': null) 家居物業
             option(value="traffic" selected= category=="traffic"? 'selected': null) 交通出行
             option(value="fun" selected= category=="fun"? 'selected': null) 休閒娛樂

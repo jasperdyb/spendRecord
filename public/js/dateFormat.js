@@ -1,4 +1,4 @@
-module.exports = date => {
+module.exports = function (date) {
   var mm = date.getMonth() + 1; // getMonth() is zero-based
   var dd = date.getDate();
 
