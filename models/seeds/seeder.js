@@ -8,8 +8,8 @@ const bcrypt = require('bcryptjs')
 //Database connection
 mongoose.connect('mongodb://localhost/record', {
   useNewUrlParser: true,
-  useCreateIndex: true
-  // useUnifiedTopology: true
+  useCreateIndex: true,
+  useUnifiedTopology: true
 })
 const db = mongoose.connection
 
@@ -27,7 +27,7 @@ db.once('open', () => {
 
   for (let i = 0; i < user.length; i++) {
     let { name, email, password } = user[i]
-    console.log(user[i])
+    // console.log(user[i])
 
     User.findOne({ email: email }).then(user => {
       if (user) {                                       // 檢查 email 是否存在
@@ -39,39 +39,40 @@ db.once('open', () => {
           password
         })
 
-        //密碼雜湊
-        bcrypt.genSalt(10, (err, salt) =>
-          bcrypt.hash(newUser.password, salt, (err, hash) => {
-            newUser.password = hash
+        // 密碼雜湊
+        let salt = bcrypt.genSaltSync(10)
+        newUser.password = bcrypt.hashSync(newUser.password, salt)
 
-            newUser
-              .save()
-              .catch(err => console.log(err))
+        console.log(newUser.password)
 
-            console.log('User added!')
+        newUser
+          .save((err, userAdded) => {
+            console.log(userAdded._id)
+            if (userAdded.email === 'user1@example.com') {
+              for (var i = 0; i < 4; i++) {
+                record[i].userId = userAdded._id
+                Records.create(record[i])
+                console.log('record added!')
+              }
+            }
+            else if (userAdded.email === 'user2@example.com') {
+              for (var i = 4; i < 8; i++) {
+                record[i].userId = userAdded._id
+                Records.create(record[i])
+                console.log('record added!')
+              }
+            }
           })
-        )
+          .catch(err => console.log(err))
+
+        console.log('User added!')
+
       }
     })
+
   }
 
-  User.findOne({ email: 'user1@example.com' })
-    .lean()
-    .exec((err, user) => {
-      for (var i = 0; i < 4; i++) {
-        record[i].userId = user._id
-        Records.create(record[i])
-      }
-    })
 
-  User.findOne({ email: 'user2@example.com' })
-    .lean()
-    .exec((err, user) => {
-      for (var i = 4; i < 8; i++) {
-        record[i].userId = user._id
-        Records.create(record[i])
-      }
-    })
 
   console.log('done')
 })
