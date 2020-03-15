@@ -1,3 +1,4 @@
 $('.input-group.date').datepicker({
-  todayHighlight: true
+  todayHighlight: true,
+  format: "yyyy/mm/dd"
 })

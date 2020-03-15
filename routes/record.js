@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Record = require('../models/record.js')
+const dateFormat = require('../public/js/dateFormat.js')
 
 router.get('/new', (req, res, next) => {
   res.render('new')
@@ -24,6 +25,7 @@ router.get('/:id/edit', (req, res, next) => {
     .exec((err, record) => {
       if (err) return console.error(err)
       console.log(record)
+      record.date = dateFormat(record.date)
       return res.render('edit', { record }) // 利用new頁面編輯資訊
     })
 })
